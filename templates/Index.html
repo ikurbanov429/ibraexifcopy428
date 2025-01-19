@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXIF Master</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">EXIF Master</h1>
+        <div class="card shadow">
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data" action="/">
+                    <div class="mb-3">
+                        <label for="source_image" class="form-label">Исходное изображение (откуда копировать EXIF):</label>
+                        <input type="file" class="form-control" name="source_image" id="source_image" accept="image/*" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="target_image" class="form-label">Целевое изображение (куда вставить EXIF):</label>
+                        <input type="file" class="form-control" name="target_image" id="target_image" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Копировать EXIF</button>
+                </form>
+            </div>
+        </div>
+
+        {% if message %}
+            <div class="alert alert-info mt-4">{{ message }}</div>
+        {% endif %}
+
+        {% if download_link %}
+            <div class="mt-4 text-center">
+                <p>Скачать обработанное изображение:</p>
+                <a href="{{ url_for('download_file', filename=download_link) }}" class="btn btn-success">{{ download_link }}</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 EXIF Master. Все права защищены.</p>
+    <p>Свяжитесь с нами: <a href="mailto:ikurbanov429@gmail.com" class="text-white">mailto:ikurbanov429@gmail.com</a></p>
+</footer>

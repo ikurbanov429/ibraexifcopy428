@@ -1,0 +1,4 @@
+Flask==2.3.2
+gunicorn==20.1.0
+Pillow==10.0.0
+piexif==1.1.3
